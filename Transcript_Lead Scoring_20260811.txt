@@ -1,0 +1,121 @@
+0:47 : Amanda Chenery : Optional.
+0:53 : Amanda Chenery : Hello and welcome to this overview of the Eloqua lead scoring model. My name is Madam Pattingdon, and today I'll be taking you through how our lead scoring infrastructure is configured, how customer interactions accumulate points and how high intent leads are validated and rooted.
+1:14 : Amanda Chenery : Before we dive into the mechanics, let's establish our objectives. The purpose of this document is to explain how the lead scoring model is structured and show the exact path a customer takes as their interaction turns into a high score lead past to the VDC. At the end of the deck, you will clearly understand our scoring.
+1:34 : Amanda Chenery : Matrix, our three stage data processing pipeline in the exact qualification thresholds. And the plan is we'll walk you through the scoring logic, examine the technical processing flow, and bring it all to life with a real world scenario following Tony and IT manager over a thirty day journey.
+1:59 : Amanda Chenery : At the core of our lead scoring framework is a dual matrix approach combining explicit and inclicit data.
+2:15 : Amanda Chenery : If we look at our, what does that mean? Our.
+2:23 : Amanda Chenery : What does that mean? Our profile logic is all about explicit data. It captures the real information that the customer has given us. So for example.
+2:37 : Amanda Chenery : What is, what is their job title and the company that they work for.
+2:43 : Amanda Chenery : The fit assessment for this is it allows us to profile our customers to determine how closely the lead matches our ideal customer profile. We also score by engagement, and this is implicitly data. This is information that captures the behavioral activity of our customers like.
+3:04 : Amanda Chenery : Clicking through on emails, clicking through on emails, interacting with our, our call center.
+3:16 : Amanda Chenery : Registing for a webinar or watching any videos. This gives us an interest assessment, it evaluates our on our customers online behavior to determine the leads level of intent and addressed. Interest. So just to clarify again, our data types are expli.
+3:38 : Amanda Chenery : Profiles which is information intentionally provided by the customer, and an implicit data is passively ab observed data and.
+3:49 : Amanda Chenery : Rubbish. The data is scrapped that last week about explicit data and implicit data.
+3:59 : Amanda Chenery : The tap typical data elements that we utilize for our profile is our decision maker type. This is determined within CDF our customer data foundation and is based on information inferred from our job levels, job titles, and job departments. We also capture or and def.
+4:18 : Amanda Chenery : Job levels and job departments within CDF, to determine a explicit list of values that we want to utilize for job levels and job departments. We also look at email domain types, which again is calculated in CDF to determine whether somebody has given us a personal email.
+4:39 : Amanda Chenery : Their corporate each email.
+4:42 : Amanda Chenery : When we look at engagement, our data elements, we look at events, form submits, manual uploads, inbound activity, inbound traffic, email activity. With our profile, our profile is then scored and weighted and given a value of A to D.
+5:03 : Amanda Chenery : These values are in twenty five point increments, starting from D at zero to twenty five and ending at a ending with an accumulated profile value of 70 six to a hundred. With our engagement, our engagement is against.
+5:23 : Amanda Chenery : Set into twenty five point segments starting at O four, sorry, starting at level four at zero to twenty five points and ending up at level one, 70 six to a hundred points.
+5:45 : Amanda Chenery : When we have scored a lead, we have a matrix grid that determines which leads actually are high and should be processed to go to the VDC. After a few quarters of monitoring the Eloqua lead score model, we have determined that when.
+6:05 : Amanda Chenery : Our profiles are around D we don't really have a lot of interest in, in sending that information to our sales teams. And also from further tweaking are.
+6:21 : Amanda Chenery : Are leads that are actually converting are when people are a kind of engagement levels of one and two. We have also noticed that anomaly with our.
+6:33 : Amanda Chenery : High profile profile A customers where they have a little bit less activity, so we do also pass a threes through to the BDC. In this chart, we can see all items in white are high scored and immediately route to the sales subject to the VDC integration rules.
+6:54 : Amanda Chenery : Which we wanna go through in further slides. Anything is low scor anything that is in gray is a low score and these records will either go into a nurture program or no further action taken until they have another interaction or another transaction and they push through the scoring model again.
+7:17 : Amanda Chenery : Looking at our profile scores, we take, we've spoken previously about the categories we've got our decision maker types, our job levels and job departments, and email types. Within each of those categories we have different field level values. Each of those field level values are given a.
+7:35 : Amanda Chenery : A score with a maximum score of a hundred. And each category is given a defined weight. We calculate the score against the weight and give a total value of points. For example, if you are a TDM, a technical decision maker, you.
+7:55 : Amanda Chenery : You'll get a hundred percent of the.
+7:59 : Amanda Chenery : Weight of twenty five giving you twenty five points. However, if you are a BDM, a business decision maker, you only get fifty percent of the score of the weight twenty five giving a total points value of fifty percent of twenty five, twelve point five.
+8:19 : Amanda Chenery : Points.
+8:22 : Amanda Chenery : As we score each of those categories against a customer, their points are accumulated and the score ranges determine the customer's grade. If for example, somebody is a TDM, twenty, we're not gonna do that.
+8:42 : Amanda Chenery : When we look at engagement schools, we have our escape gaugement schools in a similar format.
+8:54 : Amanda Chenery : AH handput scores down.
+8:58 : Amanda Chenery : Alright, so we've got engagement scores. Again, we do have further detailed information on our SharePoint site, but again, we have different values and ways and total points for our engagement scores. Each of the categories that we score our.
+9:17 : Amanda Chenery : Customers transactions on are weighted, and then the difference between the engagement scores and the profile scores is we start looking at recency. We will look at whether the action has occurred within the last seven, fourteen or thirty days. With the recency windows, the more frequ the.
+9:37 : Amanda Chenery : More recent the activity, the higher the score will be and the higher the number of points. We also look at the frequency with engagements. So within that seven fourteen or thirty days, have they interacted in that category at least once or.
+9:58 : Amanda Chenery : More than once? And again, the points and the score with the the weighting will reflect higher points for more than one activity in line with the recently.
+10:13 : Amanda Chenery : More details or our engagement scores can be found.
+10:17 : Amanda Chenery : On our SharePoint site. So what transactional information is actually included within the scoring model? We've broken it down into four categories. We have event integration, form transactions, general integrations, and email activities. From our event inte.
+10:38 : Amanda Chenery : Integrations, we look at all of our C vent and Rainfocus registrations and attendees and any session information coming from race Rainfocus. We also look at our ITN registrations, which is now Stova and our booth scans. For our form transactions, we look and treat.
+10:59 : Amanda Chenery : In different weights and scores. We look at our offers, Webex event registrations, all platforms, contact salesforcems, and a whole variety of different forms which are scored and weighted in.
+11:17 : Amanda Chenery : Individually. For our integrations, we look at manual uploads. This is third party trade shows, third party webinars, paid media and content syndication. We also look at path factory webinars, bright talk webinars, Brightcode videos, and our inbound calls and inbound chats.
+11:37 : Amanda Chenery : And then finally, within Eloqua, we look at our email activity just within Eloqua. We look at our email click throughs, we look at landing page visits and we look at the websites visits. The difference being that if we tag our landing pages, we will get extra points from our email activity.
+12:00 : Amanda Chenery : So what happens to all of this information and how do we get it into the scoring model and what happens thereafter? We then chip our marketing interactions, we have emails manual uploads that we just previously discussed. That information goes into Eloqua. Lo captures information.
+12:20 : Amanda Chenery : In custom data objects and they are named to reflect the information they are capturing. We have, for example, in our manual uploads, we have our con paid leads going into our transaction CDR and anything around webinars and.
+12:40 : Amanda Chenery : Trade shows go into our registration CDO. As that information hits the hits Eloqua, the information is passed into the lead scoring engine. Anything that is low scored will not pass through any further and will just go into a.
+13:03 : Amanda Chenery : That low score goes into low score if.
+13:09 : Amanda Chenery : If it's scored in the.
+13:14 : Amanda Chenery : If it's lead score is below the threshold, we also have some extra clauses within the scoring engine that will also score people low is if they have, if they are aligned to Australian.
+13:33 : Amanda Chenery : Public sector companies, we are not allowed to pass that information through to the BDC through the scoring engine, so those records are stopped. And we also have a thirty days pause validations within the model where we look at the customer's interactivity within the VDC in the last thirty days.
+13:54 : Amanda Chenery : So for example, if we have an open and actively available in the VDC, we, we will push the in, we will still push the lead score record into the VDC and it will match the existing lead and just give the seller more information.
+14:15 : Amanda Chenery : However, if within the last thirty days the customer has actually specifically said they don't want to be contacted or they're.
+14:26 : Amanda Chenery : Some other reason that I need to find out, then we will stop that information passing to the BDC.
+14:35 : Amanda Chenery : However, if information is high scored, we then pass that information to an Oracle database called the APP cloud light. This, the appcloudlite will implement its own validations and will pull information.
+14:52 : Amanda Chenery : It will pull the records it will not doing that. What it will do is it will append the transaction details that we'll look at in more detail on the next slide and run some validations to make sure that there is a CCID slash activity.
+15:12 : Amanda Chenery : Present. The PIPL validations have been honored that we have a country value and a transaction date. If any of these items are missing, then the record is stopped processing and not sta sent to the next stage.
+15:33 : Amanda Chenery : If all of those validations are passed, we send the information is then sent to Trey and Trey starts the processing of that lead record. It will categorize the lead to say as it knows it's come from the lead scoring engine, it will make sure that it is set as a war.
+15:52 : Amanda Chenery : Lead non hand raiser. It will look at any ccids, offer IDs, and drive to IDs that have been appended to the transaction, and we'll look at the CTT tool, the campaign tagging and tracking tool, and append additional information such as the.
+16:13 : Amanda Chenery : Name of the activity, the campaign and program, and the name and offer type.
+16:21 : Amanda Chenery : Information is then sent to CDF for a contact and account matching where we will match the contact record within CDF. It is an existing record, we will update any new information that we have received. If it is a new record, we will create a new record and match it to the correct.
+16:44 : Amanda Chenery : Re will then run some suppression rules depress suppression rules will ensure that we are not sending employees or partners through to the BDC and also from CDF we take the information as to.
+16:59 : Amanda Chenery : The customers opt in opt in selections for email and phone. Ray will then validate these opt in permissions against the country's privacy rules. For example, if the constant customer is from the USA, which is an opt.
+17:28 : Amanda Chenery : Out country, then we will I are able to send the lead record through to the VDC as long as.
+17:40 : Amanda Chenery : The email and phone permission are not known.
+17:44 : Amanda Chenery : However, for opt in countries such as Germany, we have to explicitly have a yes for either phone or email to pass that information through to the VDC.
+17:58 : Amanda Chenery : Not everybody gives permission and so we do have blank records for opt in countries we have to have an explicit yes to be able to pass that information through. And then Trey will create the lead in Salesforce.
+18:16 : Amanda Chenery : Within Salesforce, lean data will then match and merge the lead and will either will determine whether a new lead should be created or merged with an existing lead. If an agent is already has an active open lead or that customer, the scored lead.
+18:36 : Amanda Chenery : Will be appended to the open lead for reference for the agent.
+18:44 : Amanda Chenery : Once the data has been assigned to an agent, whether it be a new lead or a merge lead, then standard lead management process takes over.
+18:55 : Amanda Chenery : And the record will be published through standard lead processing.
+19:02 : Amanda Chenery : Processes.
+19:06 : Amanda Chenery : So let's look at the detailed scoring process.
+19:11 : Amanda Chenery : We said that information goes into Eliqua, but because we want to have further extra information to allow our agents to understand where that lead came from and also for us to monitor and analyze the data to ensure we are o.
+19:30 : Amanda Chenery : Optimizing it at at.
+19:33 : Amanda Chenery : The best intents.
+19:35 : Amanda Chenery : We add out of we have added processes within Eloqua that are not the standard lead processing values. The first stage is we capture information from.
+19:55 : Amanda Chenery : Six custom data objects within.
+19:59 : Amanda Chenery : Eloqua.
+20:03 : Amanda Chenery : But then happens in stage two is we pull the data from that transaction record into a segment. We will have criteria that will say, pull everything from the transaction CDO that has criteria X.
+20:22 : Amanda Chenery : And criteria y And set that as a segment. Those segments will enter a program, the three zero three eight zero program.
+20:34 : Amanda Chenery : That runs within Eloqua that takes those segments and creates external activities. The reason for creating external activities is our leads score a model cannot monitor information directly from a C custom data object. It can only monitor.
+20:55 : Amanda Chenery : Information from external, activities. Once an external activity has been created for that transaction, the external activity is added to another segment. That segment is added to a.
+21:18 : Amanda Chenery : Added to program to create check. Those external activities are then added to another program that could automatically creates a shared list and separates the information by the timefra time frame and frequency. So breaking it down into seven, fourteen.
+21:36 : Amanda Chenery : Or thirty days, and whether that has happened one or more times, that transaction. We then update the contact build within Eloqua, within with the with the relevant time and frequency value.
+21:53 : Amanda Chenery : The next stage that we run the lead score model then runs. The segment is created by sts.
+22:02 : Amanda Chenery : The segment that we previously created by the external activities are utilized within the lead score model. And then that lead scoring model enters another program to determine what happens next. If the lead scoring model comes out and says that the lead is a high scored.
+22:23 : Amanda Chenery : So A, B, C one and two, and A three with a validation check is made to see if the customer is an Australia public sector company, and then the record is.
+22:43 : Amanda Chenery : Suppressed and not passed any further. We also look at VDC interactions for that customer to determine whether we should, if they have had an interaction in the VDC in the last thirty days and to determine whether we should actually send that lead through. Put in an example here of which one.
+23:03 : Amanda Chenery : Go through and which ones don't.
+23:07 : Amanda Chenery : However, the lead is high scored, we then push the information through to the lead routine and further process it. Eloqua will then automatically create a blind form submit. This is a form submit that is not included in any transactional information.
+23:25 : Amanda Chenery : But we write the information to a different SC different custom data object called the scored lead CDO.
+23:34 : Amanda Chenery : We then pull the info the contact and transactional information into the Oracle scored lead table, and ensure a CCID is present. This is the stage on the previous slide where we moved to the apps, APP cloud light.
+23:52 : Amanda Chenery : So our detailed scoring process pushes the information through multiple programs and capturing at different stages of the transaction so that we can get a more.
+24:05 : Amanda Chenery : Granular view of what is happening within the model and what transactions are pushing that, so we can analyze it for further optimization.
+24:19 : Amanda Chenery : Let's look at a specific example. We have Tony the IT manager and Tony, the IT Tony is an IT manager for the security team at patterns and tech solutions. And has engaged with Cisco for previous sales.
+24:38 : Amanda Chenery : When we look at his profile information, we know he has told us that he is a IT manager within CDF that is mapped to a job level of a manager that gives me a score and a weight within that category and with a total of six point two five.
+24:58 : Amanda Chenery : Also within CDF we know that this person is a, is a decision maker type is technical. Therefore, because we know that they're we know that they are an IT manager and we also know that the department is in mis.
+25:22 : Amanda Chenery : When Tony has previously worked with us, he has given us his corporate email, and we also utilize that. Each of those items are scored, weighted and given a total. That total is accumulated together and gives him a accumulative score of sixty seven point five.
+25:42 : Amanda Chenery : And he gets a profile score of B.
+25:50 : Amanda Chenery : Looking at Tony's thirty day interaction with Cisco.
+25:55 : Amanda Chenery : Tony's demonstrated increasing engagement with our contact, he's clicked a link from an email but didn't explore further. However, he turned late, it returned later and he watched half a video. So today after performing independent research, Tony's returned to the site and watched a full webinar and scheduled a demo.
+26:16 : Amanda Chenery : How does that look within our scoring model? We take transactional information from his email clip, which was twelve days ago, so it is scored as a recently and recently of one time within fourteen days. Alongside doing the email click, he lands on a.
+26:38 : Amanda Chenery : On a, a landing page which then gives him again another score within fourteen days. What we also see is.
+26:50 : Amanda Chenery : Let's do it the other way around.
+26:54 : Amanda Chenery : So today, starting at the top.
+26:59 : Amanda Chenery : Starting at the top, today Tony has.
+27:05 : Amanda Chenery : Requested a demo. He's by requesting a demo today. He has within the this is one time within the last seven days, he gets a score of ninety, a weight of twenty five, which gives him a total score of twenty two point five. Twenty two point five is.
+27:24 : Amanda Chenery : High enough for a lead to be scored and sent to is not a high enough score for the lead to be sent automatically to the VDC. We also then look back as these activity within the last thirty days. We see his watched a webinar with again within the last seven days and that is a s.
+27:44 : Amanda Chenery : Cored accordingly to the time frame, and how much of the no, not how much. That's, scored it accordingly with the time frame, and the frequency.
+27:57 : Amanda Chenery : We also see that.
+27:59 : Amanda Chenery : Again, within the last week, he's watched a video as well, and within two weeks, he's he land, he clicked on an email and landed on a LAN on a landing page. What we see is with the email click and the and the.
+28:17 : Amanda Chenery : Landing page visit, the score has depreciated because of the time and recency. Taking the last thirty days of information into consideration, Tony is All Tony's interactions are given a score at that particular moment in time.
+28:38 : Amanda Chenery : And he gets an accumulative score of fifty two, given him an engagement score of two.
+28:45 : Amanda Chenery : Tony.
+28:47 : Amanda Chenery : Is now able Tony now has a s score of B two which will push him directly through to the BDC, add in another slide here with the being an a circle round B two.
+29:06 : Amanda Chenery : That one.
+29:09 : Amanda Chenery : But information purposes, we do have.
+29:12 : Amanda Chenery : Supporting documentation that.
+29:16 : Amanda Chenery : Looks at the technical details of how the scoring model is put together with all the weights and scores. Our SharePoint site gives examples, SharePoint site with all the detailed information. We have a document that shows examples of lead scoring and how it happen.
+29:37 : Amanda Chenery : And we also have a link to our lead scoring analysis over which happens each quarter. So that we can review and optimize the scoring model at the end of each quarter.
+29:50 : Amanda Chenery : Thank you for listening.
+
